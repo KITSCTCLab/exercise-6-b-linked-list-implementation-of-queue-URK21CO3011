@@ -1,34 +1,21 @@
-class Node:
-  def __init__(self, data):
-    self.data = data
-    self.next = None
+from typing import List
 
-
-class Queue:
-  def __init__(self):
-    self.head = None
-    self.last = None
-
-  def enqueue(self, data) -> None:
-    # Write your code here
-
-  def dequeue(self) -> None:
-    # Write your code here
-
-  def status(self) -> None:
-    # Write your code here
-
+def selectionSort(array, size) -> List[int]:
+  # Write your code here
+  for i in range(size):
+    min = i
+    for j in range(i + 1, size):
+      if array[min] > array[j]:
+        min = j;
+    array[i], array[min] = array[min], array[i]
+  return array
 
 # Do not change the following code
-queue = Queue()
-operations = []
-for specific_operation in input().split(','):
-    operations.append(specific_operation.strip())
 input_data = input()
-data = input_data.split(',')
-for i in range(len(operations)):
-  if operations[i] == "enqueue":
-    queue.enqueue(int(data[i]))
-  elif operations[i] == "dequeue":
-    queue.dequeue()
-queue.status()
+data = []
+for item in input_data.split(', '):
+  if item.isnumeric():
+    data.append(int(item))
+  elif item.lstrip("-").isnumeric():
+    data.append(int(item))
+print(selectionSort(data, len(data)))
